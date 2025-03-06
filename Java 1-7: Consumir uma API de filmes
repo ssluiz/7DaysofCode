@@ -1,0 +1,42 @@
+Por exemplo, para buscar o nome de um filme, basta usar:
+
+https://imdb-api.com/en/API/Top250Movies/<apiKey>https://imdb-api.com/en/API/Top250Movies/
+
+O resultado da pesquisa será um JSON parecido com esse:
+
+{"items":[{"id":"tt5491994","rank":"1","title":"Planet Earth II","fullTitle":"Planet Earth II (2016)"…
+
+Mas chegou a hora de escrever o código e fazer a coisa funcionar! Vamos lá? Vou passar aqui abaixo uma espécie de passo-a-passo, para você não se perder muito neste primeiro dia. O que você vai precisar fazer:
+
+
+Criar uma conta no IMDB para ter a chave de acesso ao serviço (apiKey), mas cuidado, essa chave não deve ser commitada no Github ou em outro repositório!
+
+Criar o código Java que executará uma requisição HTTP do tipo GET. Você pode usar o pacote java.net.http e as classes HttpRequest, HttpClient e HttpResponse, além da classe URI
+
+Executar a requisição e pegar a resposta (o JSON)
+
+Imprimir o corpo da resposta no console
+
+Simples, não? Nesse exercício, eu sugeri usar as classes do pacote java.net.http, mas você pode escolher qualquer outra. Se quiser, você pode inclusive usar outros conectores HTTP.
+
+Para esse início, faça tudo no main mesmo! Posteriormente, vou te guiar na evolução desse código, para que ele seja mais maleável, orientado a objetos, e para te gerar algumas reflexões também.
+
+DICA
+Tanto a classe java.net.http.HttpRequest quanto a java.net.http.HttpClient seguem o padrão de projeto Builder para simplificar a construção de um objeto dessas classes. Isso significa que você não vai usar ‘new’ diretamente, mas sim métodos auxiliares para deixar a construção mais expressiva e fluída.
+
+Por exemplo, para construir um objeto da classe HttpRequest, você deve primeiro criar um Builder usando o método newBuilder:
+
+   HttpRequest request = HttpRequest
+            .newBuilder()
+            .uri(new URI(“http://www.imdb...”))
+            .GET()
+            .build();
+
+Repare que, a partir do Builder, você pode definiar a URI e o tipo de requisição (GET ou POST), para depois construir o objeto com o método build().
+
+A HttpClient funciona de maneira análoga. Ela possui o seu próprio builder, além de executar a requisição e devolver a resposta.
+
+EXTRA
+Se você quiser ver mais alguns exemplos de uso da HttpClient, você pode acessar este link.
+
+Ah, e não se esqueça de compartilhar o seu código no seu GitHub e marcar a gente nas suas redes sociais com a hashtag #7DaysOfCode, e também com #feedback7DoC caso você queira alguma ajuda.
